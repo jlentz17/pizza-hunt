@@ -4,10 +4,10 @@ const CommentSchema = new Schema({
     wriitenBy: {
         type: String
     },
-    commenntBody: {
+    commentBody: {
         type: String
     },
-    ccreatedAt: {
+    createdAt: {
         type: Date,
         default: Date.now
     }
