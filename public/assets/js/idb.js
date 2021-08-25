@@ -34,7 +34,7 @@ function saveRecord(record) {
   const transaction = db.transaction(["new_pizza"], "readwrite");
 
   // access the object store for `new_pizza`
-  const pizzaObjectStore = transaction.ObjectStore("new_pizza");
+  const pizzaObjectStore = transaction.objectStore("new_pizza");
 
   // add record to your store with add method
   pizzaObjectStore.add(record);
@@ -45,7 +45,7 @@ function uploadPizza() {
   const transaction = db.transaction(["new_pizza"], "readwrite");
 
   // access your object store
-  const pizzaObjectStore = transaction.ObjectStore("new_pizza");
+  const pizzaObjectStore = transaction.objectStore("new_pizza");
 
   // get all records from store and set to a variable
   const getAll = pizzaObjectStore.getAll();

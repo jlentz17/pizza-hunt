@@ -10,15 +10,18 @@ const ReplySchema = new Schema(
     },
     replyBody: {
       type: String,
+      required: true,
+      trim: true
     },
     writtenBy: {
       type: String,
+      required: true
     },
     createdAt: {
       type: Date,
       default: Date.now,
-      get: (createdAtVal) => dateFormat(createdAtVal),
-    },
+      get: createdAtVal => dateFormat(createdAtVal),
+    }
   },
   {
     toJSON: {
@@ -31,14 +34,18 @@ const CommentSchema = new Schema(
   {
       wriitenBy: {
           type: String,
+          required: true,
+          trim: true
         },
         commentBody: {
             type: String,
+            required: true,
+            trim: true
         },
         createdAt: {
             type: Date,
             default: Date.now,
-            get: (createdAtVal) => dateFormat(createdAtVal),
+            get: createdAtVal => dateFormat(createdAtVal),
         },
         // use ReplySchema to validate data for a reply
         replies: [ReplySchema]
@@ -52,7 +59,7 @@ const CommentSchema = new Schema(
   }
 );
 
-CommentSchema.virtual("replyCount").get(function() {
+CommentSchema.virtual("replyCount").get(function () {
     return this.replies.length
 })
 
