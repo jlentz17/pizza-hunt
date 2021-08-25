@@ -19,7 +19,7 @@ request.onSuccess = function (event) {
   // check if app is online, if yes run uploadPizza() function to send local db data to api
   if (navigator.online) {
     // we haven't created this yet, but we will soon, so let's comment it out for now
-    uploadPizza()
+    uploadPizza();
   }
 };
 
@@ -62,26 +62,26 @@ function uploadPizza() {
           "Content-Type": "application/json",
         },
       })
-      .then(response => response.json())
-      .then(serverResponse => {
+        .then((response) => response.json())
+        .then((serverResponse) => {
           if (serverResponse.message) {
-              throw new Error(serverResponse)
+            throw new Error(serverResponse);
           }
-        //   open one more transaction
-        const transaction = db.transaction(["new_pizza"], "readwrite")
-        // access the new_pizza object store
-        const pizzaObjectStore = transaction.objectStore("new_pizza")
-        // clear all items in your store
-        pizzaObjectStore.clear()
+          //   open one more transaction
+          const transaction = db.transaction(["new_pizza"], "readwrite");
+          // access the new_pizza object store
+          const pizzaObjectStore = transaction.objectStore("new_pizza");
+          // clear all items in your store
+          pizzaObjectStore.clear();
 
-        alert("All saved pizza has been submitted!")
-      })
-      .catch(err => {
-          console.log(err)
-      })
+          alert("All saved pizza has been submitted!");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
   };
 }
 
 // listen for app coming back online
-window.addEventListener("online", uploadPizza)
+window.addEventListener("online", uploadPizza);

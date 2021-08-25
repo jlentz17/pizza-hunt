@@ -167,7 +167,7 @@ function handleNewReplySubmit(event) {
 
   const formData = { writtenBy, replyBody };
 
-  fetch("/api/comments/${pizzaId}/${commentId}", {
+  fetch(`/api/comments/${pizzaId}/${commentId}`, {
     method: "PUT",
     headers: {
       Accept: "application/json",
@@ -194,7 +194,8 @@ $backBtn.addEventListener("click", function () {
   window.history.back();
 });
 
-getPizza();
 
 $newCommentForm.addEventListener("submit", handleNewCommentSubmit);
 $commentSection.addEventListener("submit", handleNewReplySubmit);
+
+getPizza();
