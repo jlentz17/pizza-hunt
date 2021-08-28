@@ -38,8 +38,7 @@ const PizzaSchema = new Schema(
       getters: true
     },
     id: false,
-    bufferCommands: false,
-    autoCreate: false
+    bufferCommands: false
   }
 );
 
@@ -50,7 +49,5 @@ PizzaSchema.virtual("commentCount").get(function () {
 
 // create the Pizza model using the PizzaSchema
 const Pizza = model("Pizza", PizzaSchema);
-
-await Pizza.createCollection();
 
 module.exports = Pizza;
