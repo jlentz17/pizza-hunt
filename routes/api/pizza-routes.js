@@ -7,7 +7,7 @@ const {
     updatePizza,
     deletePizza
 } = require("../../controllers/pizza-controller")
-const { update } = require("../../models/Pizza")
+
 
 // Set up GET all and POST at /api/pizzas
 router
