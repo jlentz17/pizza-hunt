@@ -5,7 +5,6 @@ const getPizzaList = () => {
     response
       .json()
       .then((pizzaListArr) => {
-        console.log(pizzaListArr);
         pizzaListArr.forEach(printPizza);
       })
 
