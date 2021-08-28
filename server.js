@@ -19,8 +19,7 @@ const start = async () => {
 
   // use this to log mongo queries being executed
   mongoose.set("debug", true);
-  mongoose.set('bufferCommands', false);
-  
+
   app.listen(PORT, () => console.log(`🌍 Connected on localhost:${PORT}`));
 }
 start();
