@@ -40,6 +40,7 @@ const pizzaController = {
   },
   // create pizza
   createPizza({ body }, res) {
+    console.log("created pizza!")
     Pizza.create(body)
       .then((dbPizzaData) => res.json(dbPizzaData))
       .catch((err) => res.status(400).json(err));
