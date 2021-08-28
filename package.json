@@ -20,6 +20,6 @@
   "homepage": "https://github.com/jlentz17/pizza-hunt#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "mongoose": "4.13.8"
+    "mongoose": "6.0.2"
   }
 }

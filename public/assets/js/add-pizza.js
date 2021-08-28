@@ -2,6 +2,7 @@ const $addToppingBtn = document.querySelector('#add-topping');
 const $pizzaForm = document.querySelector('#pizza-form');
 const $customToppingsList = document.querySelector('#custom-toppings-list');
 
+//Add toppings
 const handleAddTopping = event => {
   event.preventDefault();
 
@@ -36,13 +37,13 @@ const handleAddTopping = event => {
   toppingValue.value = '';
 };
 
+//compile results for submission
 const handlePizzaSubmit = event => {
   event.preventDefault();
 
   const pizzaName = $pizzaForm.querySelector('#pizza-name').value;
   const createdBy = $pizzaForm.querySelector('#created-by').value;
   const size = $pizzaForm.querySelector('#pizza-size').value;
-  // transform DOM data into a real array of objects to execute .map()
   const toppings = [...$pizzaForm.querySelectorAll('[name=topping]:checked')].map(topping => {
     return topping.value;
   });
@@ -53,6 +54,7 @@ const handlePizzaSubmit = event => {
 
   const formData = { pizzaName, createdBy, size, toppings };
 
+  //POST form data to the API
   fetch('/api/pizzas', {
     method: 'POST',
     headers: {
@@ -63,12 +65,16 @@ const handlePizzaSubmit = event => {
   })
     .then(response => response.json())
     .then(postResponse => {
-      alert(postResponse.err, 'Pizza created successfully!');
+      //alert if successfully created
+      alert('Pizza created successfully!');
+      console.log(`post Response = ${postResponse}`);
     })
     .catch(err => {
       console.log(err);
-      saveRecord(formData)
+      //save record to IndexedDB if connection fails
+      saveRecord(formData);
     });
+
 };
 
 $pizzaForm.addEventListener('submit', handlePizzaSubmit);
