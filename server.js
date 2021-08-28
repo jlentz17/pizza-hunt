@@ -15,7 +15,7 @@ const start = async () => {
   useFindAndModify: false,
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  }).catch();
+  }).catch((err) => { console.error(err); });
 
   // use this to log mongo queries being executed
   mongoose.set("debug", true);
