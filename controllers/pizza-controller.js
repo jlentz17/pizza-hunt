@@ -43,7 +43,7 @@ const pizzaController = {
     console.log(body)
     Pizza.create(body)
       .then((dbPizzaData) => res.json(dbPizzaData))
-      .catch((err) => res.status(400).json(body));
+      .catch((err) => res.status(400).json(err));
   },
   // update pizza by id
   updatePizza({ params, body }, res) {
