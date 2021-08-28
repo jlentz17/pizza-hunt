@@ -37,8 +37,7 @@ const PizzaSchema = new Schema(
       virtuals: true,
       getters: true
     },
-    id: false,
-    bufferCommands: false
+    id: false
   }
 );
 
