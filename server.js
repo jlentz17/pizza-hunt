@@ -10,13 +10,15 @@ app.use(express.static("public"));
 
 app.use(require("./routes"));
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/pizza-hunt", {
+const start = async () => {
+  await mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/pizza-hunt", {
   useFindAndModify: false,
   useNewUrlParser: true,
   useUnifiedTopology: true,
-});
+  });
 
-// use this to log mongo queries being executed
-mongoose.set("debug", true)
-
+  // use this to log mongo queries being executed
+  await mongoose.set("debug", true);
+}
+start();
 app.listen(PORT, () => console.log(`🌍 Connected on localhost:${PORT}`));
