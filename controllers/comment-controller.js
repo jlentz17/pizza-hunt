@@ -3,11 +3,11 @@ const { Comment, Pizza } = require("../models");
 // Comment Controller Object
 const commentController = {
   // add comment to pizza
-  addComment({ params, body }, res) {
-    Comment.create(body)
+  addComment(req, res) {
+    Comment.create(req.body)
       .then(({ _id }) => {
         return Pizza.findOneAndUpdate(
-          { _id: params.pizzaId },
+          { _id: req.params.pizzaId },
           { $push: { comments: _id } },
           { new: true, runValidators: true }
         );
